@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  email String @unique
+  name  String
+  role  Role   @default(PATIENT)
+
+  password_hash String
+
+  patientAppointments Appointment[] @relation("PatientAppointments")
+  doctorAppointments  Appointment[] @relation("DoctorAppointments")
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Appointment {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  patient   User   @relation("PatientAppointments", fields: [patientId], references: [id])
+  patientId String @db.ObjectId
+
+  doctor   User   @relation("DoctorAppointments", fields: [doctorId], references: [id])
+  doctorId String @db.ObjectId
+
+  start_date DateTime
+  end_date   DateTime
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("appointments")
+}
+
+enum Role {
+  ADMIN
+  PATIENT
+  DOCTOR
+}
+
+enum AppointMentStatus {
+  APPROVED
+  CANCELLED
+}
