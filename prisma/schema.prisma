@@ -11,15 +11,15 @@ datasource db {
 }
 
 model User {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  email String @unique
+  id    String   @id @default(auto()) @map("_id") @db.ObjectId
+  email String   @unique
   name  String
-  role  Role   @default(PATIENT)
+  type  UserType @default(PATIENT)
 
   password_hash String
 
-  patientAppointments Appointment[] @relation("PatientAppointments")
-  doctorAppointments  Appointment[] @relation("DoctorAppointments")
+  patient_appointments Appointment[] @relation("PatientAppointments")
+  doctor_appointments  Appointment[] @relation("DoctorAppointments")
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -30,14 +30,16 @@ model User {
 model Appointment {
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
-  patient   User   @relation("PatientAppointments", fields: [patientId], references: [id])
-  patientId String @db.ObjectId
+  patient    User   @relation("PatientAppointments", fields: [patient_id], references: [id], onDelete: Cascade)
+  patient_id String @db.ObjectId
 
-  doctor   User   @relation("DoctorAppointments", fields: [doctorId], references: [id])
-  doctorId String @db.ObjectId
+  doctor    User   @relation("DoctorAppointments", fields: [doctor_id], references: [id], onDelete: Cascade)
+  doctor_id String @db.ObjectId
 
   start_date DateTime
   end_date   DateTime
+
+  status AppointMentStatus @default(APPROVED)
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -45,7 +47,7 @@ model Appointment {
   @@map("appointments")
 }
 
-enum Role {
+enum UserType {
   ADMIN
   PATIENT
   DOCTOR
