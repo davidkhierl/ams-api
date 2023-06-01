@@ -73,7 +73,7 @@ export class AppointmentController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOkResponse({
-    description: 'Appointments',
+    description: 'Get all appointments related to current user.',
     type: AppointmentEntity,
     isArray: true,
   })

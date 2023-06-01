@@ -53,10 +53,12 @@ export class AppointmentService {
   }
 
   async findAll() {
-    return this._excludePasswords(
-      await this.prismaService.appointment.findMany({
-        include: { doctor: true, patient: true },
-      }),
+    const appointments = await this.prismaService.appointment.findMany({
+      include: { doctor: true, patient: true },
+    });
+
+    return appointments.map((appointment) =>
+      this._excludePasswords(appointment),
     );
   }
 
