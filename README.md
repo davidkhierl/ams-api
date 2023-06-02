@@ -1,73 +1,64 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Appointment Management System API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is built from NestJS framework
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Getting Started
 
-## Description
+First Update env file set the following
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- DATABASE_URL
+- JWT_SECRET
+- JWT_REFRESH_SECRET
+- PORT (Optional)
 
-## Installation
+This Project uses yarn as package manager
+
+Second install and run the development server:
 
 ```bash
-$ pnpm install
+yarn install
+
+// seed the database
+yarn prisma db seed
+
+yarn start:dev
 ```
 
-## Running the app
+## Tech Stack and libraries
 
-```bash
-# development
-$ pnpm run start
+### Frontend
 
-# watch mode
-$ pnpm run start:dev
+- NextJS Framework for frontend
+- Chakra UI
+- React
+- React query
+- Zustand
+- Dayjs
+- Typescript
 
-# production mode
-$ pnpm run start:prod
-```
+### Backend
 
-## Test
+- NestJS Framework (uses expressjs under the hood)
+- Prisma an ORM
+- MongoDB for database
+- Typescript
 
-```bash
-# unit tests
-$ pnpm run test
+## Estimated time
 
-# e2e tests
-$ pnpm run test:e2e
+- 4-6hrs (Backend) 4-6hrs (Frontend)
 
-# test coverage
-$ pnpm run test:cov
-```
+## Pending
 
-## Support
+### Backend
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- guest appointment creation
+- some minor validation
 
-## Stay in touch
+### Frontend
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- admin and Doctor appointment portal
+- guest appointment creation
 
-## License
+## Summary
 
-Nest is [MIT licensed](LICENSE).
+Although I enjoyed this task ✨, I wish I had more time to finish everything on the frontend side. Implementing the UI 💅 and its functionalities really won't fit on the given deadline 😅
