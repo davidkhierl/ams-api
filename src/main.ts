@@ -46,16 +46,6 @@ async function bootstrap() {
     .addTag('Users')
     .addTag('Appointments')
     .addBearerAuth()
-    .addServer('http://localhost:{port}', 'Appointment Management System API', {
-      protocol: {
-        enum: ['http', 'https'],
-        default: 'http',
-      },
-      port: {
-        enum: [port],
-        default: port,
-      },
-    })
     .build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, document);
